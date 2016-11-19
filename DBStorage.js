@@ -3,9 +3,6 @@
  *  考虑到时间问题, 对数据存取算法不做优化, 简单的使用遍历完成
  *  2016-11-18 2:17:00 想到算法错误 
  */
-
-
-
 (function ( window ){
 
 var storage = window.localStorage;
@@ -77,7 +74,6 @@ function each( obj, callback ) {
     return obj;
 }
 
-
 function getId() {
     var dateNum = +new Date;
     // var idString = ( "00000000000000000000000000000000" + identification )
@@ -87,13 +83,8 @@ function getId() {
     return dateNum + idString;
 }
 
-
-
-var __master__ = 'jkdb.master',
-    __namespace__ = 'jkdb.';
-
-
-
+var __master__ = 'charles.master',
+    __namespace__ = 'charles.';
 
 // db
 
@@ -104,7 +95,7 @@ function Base () {
     this.__dbs__ = {};
     this.__current__ = __master__;
     this.__dbs__[ __master__ ] = {};
-    // jkdb.master 作为 内存数据库
+    // charles.master 作为 内存数据库
 
     // 保存当前操作数据集
     this.__current_collection__ = null;
@@ -172,7 +163,7 @@ Base.prototype = {
         return this;
     },
 
-    // 删除当前数据库, 并切换至 jkdb.master
+    // 删除当前数据库, 并切换至 charles.master
     dropDatabase: function () {
         var current_db_name = this.__current__;
         this.__current__ = __master__;
@@ -211,10 +202,6 @@ Base.prototype = {
             return k;
         });
     },
-
-
-
-
 
 
     // 基本 CRUD
@@ -320,27 +307,6 @@ function compare( source, obj ) {
     }
     return true;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 window.dbs = new Base();
 
